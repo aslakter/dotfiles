@@ -4,14 +4,82 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/aslakter/.oh-my-zsh
 
-export TERM="xterm-256color"
-
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="bureau"
-#ZSH_THEME="amuse"
-#ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Power Level 9k custom
+POWERLEVEL9K_MODE='nerdfont-complete'
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+# Prompts
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh context dir virtualenv vcs)
+else
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir virtualenv vcs)
+fi
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( battery time)
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
+POWERLEVEL9K_SHORTEN_DELIMITER=..
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\uE0B4'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='\uE0B6'
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰\uF460\uF460\uF460 "
+POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
+
+# Colors
+POWERLEVEL9K_VIRTUALENV_BACKGROUND='white' #107
+POWERLEVEL9K_VIRTUALENV_FOREGROUND='white'
+POWERLEVEL9K_OS_ICON_BACKGROUND='white'
+POWERLEVEL9K_OS_ICON_FOREGROUND='black'
+POWERLEVEL9K_TIME_BACKGROUND='white'
+POWERLEVEL9K_TIME_FOREGROUND='black'
+
+# Battery colors
+POWERLEVEL9K_BATTERY_CHARGING='107'
+POWERLEVEL9K_BATTERY_CHARGED='blue'
+POWERLEVEL9K_BATTERY_LOW_THRESHOLD='50'
+POWERLEVEL9K_BATTERY_LOW_COLOR='red'
+POWERLEVEL9K_BATTERY_CHARGED_BACKGROUND='blue'
+POWERLEVEL9K_BATTERY_CHARGED_FOREGROUND='white'
+POWERLEVEL9K_BATTERY_CHARGING_BACKGROUND='107'
+POWERLEVEL9K_BATTERY_CHARGING_FOREGROUND='white'
+POWERLEVEL9K_BATTERY_LOW_BACKGROUND='red'
+POWERLEVEL9K_BATTERY_LOW_FOREGROUND='white'
+POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND='white'
+POWERLEVEL9K_BATTERY_DISCONNECTED_BACKGROUND='214'
+
+# VCS colors
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='white'
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='black'
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='white'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='red'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='white'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
+
+# Other colors 
+POWERLEVEL9K_DIR_HOME_BACKGROUND="blue"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="blue"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="blue"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+
+
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -55,7 +123,13 @@ ZSH_THEME="bureau"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
+
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -67,11 +141,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -84,9 +158,7 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Example aliase
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
 fi
