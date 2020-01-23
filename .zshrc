@@ -21,7 +21,7 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 else
   POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon anaconda dir virtualenv vcs)
 fi
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs battery ram time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs time) # battery ram
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
 POWERLEVEL9K_SHORTEN_DELIMITER=..
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\uE0B4'
@@ -104,15 +104,15 @@ POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -165,3 +165,5 @@ fi
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
