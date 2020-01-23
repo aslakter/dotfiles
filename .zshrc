@@ -75,8 +75,6 @@ POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 
-
-
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -132,7 +130,7 @@ plugins=(
   zsh-autosuggestions
 )
 
-
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=green"
 
 source $ZSH/oh-my-zsh.sh
 
