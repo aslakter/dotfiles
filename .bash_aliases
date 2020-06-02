@@ -8,3 +8,15 @@ alias restart_audio='sudo killall coreaudiod'
 
 # PATH VARIABLE
 export PATH=$HOME/bin:$PATH
+
+# functions
+function up() {
+	case $1 in 
+	*[!0-9]*)
+		cd $( pwd | sed -r "s|(.*/$1[^/]*/).*|\1|" )
+		;;
+	*)
+		cd $(printf "%0.0s../" $(seq 1 $1));
+	;;
+	esac
+}

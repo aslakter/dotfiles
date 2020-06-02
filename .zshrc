@@ -15,6 +15,8 @@ export ZSH=/Users/aslakter/.oh-my-zsh
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
+export TERM="xterm-256color"
+
 # Prompts
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh context anaconda dir virtualenv vcs)
