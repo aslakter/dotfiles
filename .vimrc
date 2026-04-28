@@ -1,5 +1,5 @@
 syntax enable
-colorscheme wombad256mod
+colorscheme wombat256mod
 highlight Normal guibg=black guifg=white
 set background=dark
 set list
